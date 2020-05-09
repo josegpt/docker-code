@@ -1,21 +1,26 @@
 #!/bin/bash
 
-# file with personal setup
-DOTFILES=/config/.config
+# variables
+HOME=/config
+WORK_TREE=--work-tree="$HOME"
+GIT_DIR=--git-dir="$HOME/.dotfiles"
 
 # create folders
 mkdir -p /config/workspace
 
 # personal setup
-if [ -d "$DOTFILES" ]
+if [ -d "$HOME/.dotfiles" ]
 then
   echo "**** updating personal setup ****"
-  git -C /config pull
+  git $GIT_DIR $WORK_TREE pull
 else
   echo "**** setting personal setup ****"
   git clone https://github.com/josegpt/dotfiles.git /tmp/dotfiles
-  cp -aR /tmp/dotfiles/. /config
+  cp -aR /tmp/dotfiles/. $HOME
   rm -rf /tmp/*
+  mv $HOME/.git $HOME/.dotfiles
+  echo ".dotfiles" >> $HOME/.gitignore
+  git $GIT_DIR $WORK_TREE config --local status.showUntrackedFiles no
 fi
 
 # get username
