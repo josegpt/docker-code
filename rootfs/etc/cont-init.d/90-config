@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# file with personal setup
+DOTFILES=/config/.config
+
+# create folders
+mkdir -p /config/workspace
+
+# personal setup
+if [ -d "$DOTFILES" ]
+then
+  echo "**** updating personal setup ****"
+  git -C /config pull
+else
+  echo "**** setting personal setup ****"
+  git clone https://github.com/josegpt/dotfiles.git /tmp/dotfiles
+  cp -aR /tmp/dotfiles/. /config
+  rm -rf /tmp/*
+fi
+
+# get username
+USER_NAME=${USER_NAME:-josegpt}
+
+# change shell
+usermod -s /usr/bin/fish ${USER_NAME}
