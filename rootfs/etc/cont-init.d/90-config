@@ -15,7 +15,7 @@ then
   git $GIT_DIR $WORK_TREE pull
 else
   echo "**** setting personal setup ****"
-  git clone https://github.com/josegpt/dotfiles.git /tmp/dotfiles
+  git clone $GIT_REPOSITORY /tmp/dotfiles
   cp -aR /tmp/dotfiles/. $HOME
   rm -rf /tmp/*
   mv $HOME/.git $HOME/.dotfiles
