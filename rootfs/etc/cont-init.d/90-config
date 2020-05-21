@@ -6,7 +6,7 @@ WORK_TREE=--work-tree="$HOME"
 GIT_DIR=--git-dir="$HOME/.dotfiles"
 
 # create folders
-mkdir -p /config/workspace
+mkdir -p "$HOME"/workspace
 
 # personal setup
 if [ -d "$HOME/.dotfiles" ]
@@ -22,9 +22,6 @@ else
   echo ".dotfiles" >> $HOME/.gitignore
   git $GIT_DIR $WORK_TREE config --local status.showUntrackedFiles no
 fi
-
-# get username
-USER_NAME=${USER_NAME:-josegpt}
 
 # change shell
 usermod -s /usr/bin/fish ${USER_NAME}
