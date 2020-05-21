@@ -8,7 +8,14 @@ GIT_DIR=--git-dir="$HOME/.dotfiles"
 # create folders
 mkdir -p "$HOME"/workspace
 
-# personal setup
+# git config
+if [ ! -z "$GIT_USER_NAME" ] && [ ! -z "$GIT_USER_EMAIL" ]; then
+  git config --global user.name "$GIT_USER_NAME"
+  git config --global user.email "$GIT_USER_EMAIL"
+  git config --global core.editor emacs
+fi
+
+# get dotfiles
 if [ -d "$HOME/.dotfiles" ]
 then
   echo "**** updating personal setup ****"
