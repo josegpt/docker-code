@@ -5,9 +5,6 @@ HOME=/config
 WORK_TREE=--work-tree="$HOME"
 GIT_DIR=--git-dir="$HOME/.dotfiles"
 
-# create folders
-mkdir -p "$HOME"/workspace
-
 # git config
 if [ ! -z "$GIT_USER_NAME" ] && [ ! -z "$GIT_USER_EMAIL" ]; then
   git config --global user.name "$GIT_USER_NAME"
@@ -32,3 +29,6 @@ fi
 
 # change shell
 usermod -s /usr/bin/fish ${USER_NAME}
+
+# permissions
+chown -R "$USER_NAME":"$USER_NAME" "$HOME"
