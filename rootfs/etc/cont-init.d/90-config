@@ -30,10 +30,6 @@ else
   git $GIT_DIR $WORK_TREE config --local status.showUntrackedFiles no
 fi
 
-# development package
-apk add nodejs yarn ghc-dev cabal \
-  go build-base
-
 # change shell
 usermod -s /usr/bin/fish ${USER_NAME}
 
