@@ -1,2 +1,2 @@
-# docker-code
-This is my own IDE
+# docker-ide
+This is my personal IDE
