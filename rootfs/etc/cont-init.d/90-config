@@ -15,6 +15,12 @@ if [ ! -z "$GIT_USER_NAME" ] && [ ! -z "$GIT_USER_EMAIL" ]; then
   git config --global core.editor nvim
 fi
 
+# oh-my-zsh
+if [ -z "$ZSH" ] && [ ! -d "$HOME/.oh-my-zsh" ]; then
+  echo "**** installing oh my zsh ****"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
+
 # get dotfiles
 if [ -d "$HOME/.dotfiles" ]
 then
