@@ -12,7 +12,7 @@ mkdir -p "$HOME"/workspace
 if [ ! -z "$GIT_USER_NAME" ] && [ ! -z "$GIT_USER_EMAIL" ]; then
   git config --global user.name "$GIT_USER_NAME"
   git config --global user.email "$GIT_USER_EMAIL"
-  git config --global core.editor emacs
+  git config --global core.editor nvim
 fi
 
 # get dotfiles
@@ -31,7 +31,7 @@ else
 fi
 
 # change shell
-usermod -s /usr/bin/fish ${USER_NAME}
+usermod -s /bin/zsh ${USER_NAME}
 
 # permissions
 chown -R "$USER_NAME":"$USER_NAME" "$HOME"
